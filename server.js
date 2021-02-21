@@ -16,7 +16,7 @@ const mongoose = require("mongoose");
 
 const PORT = process.env.PORT || 3000;
 
-const User = require("./models/Workout.js");
+const db = require("./models");
 const app = express();
 
 app.use(logger("dev"));
@@ -26,25 +26,24 @@ app.use(express.json());
 
 app.use(express.static("public"));
 
-mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/populatedb", { useNewUrlParser: true });
+mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/dbWorkout", {
+  useNewUrlParser: true,
+});
 
-app.post("/submit", ({ body }, res) => {
-    User.create(body)
-      .then(dbUser => {
-        res.json(dbUser);
-      })
-      .catch(err => {
-        res.json(err);
-      });
-  });
-  
-  app.listen(PORT, () => {
-    console.log(`App running on port ${PORT}!`);
+app.listen(PORT, () => {
+  console.log(`App running on port ${PORT}!`);
+});
+
+Workout.create(data)
+  .then((dbWorkout) => {
+    console.log(dbWorkout);
+  })
+  .catch(({ message }) => {
+    console.log(message);
   });
 
-// When the user loads the page, they should be given the option to create a new workout 
+// When the user loads the page, they should be given the option to create a new workout
 // POST: /submit
-
 
 //or continue with their last workout.
 // GET: /all
@@ -57,7 +56,7 @@ app.post("/submit", ({ body }, res) => {
 // POST: /update/:id
 
 // View the combined weight of multiple exercises from the past seven workouts on the `stats` page.
-// GET: 
+// GET:
 
 // View the total duration of each workout from the past seven workouts on the `stats` page.
-// GET: 
+// GET:
