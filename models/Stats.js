@@ -5,7 +5,6 @@ const StatsSchema = new Schema({
     name: {
         type: String,
         trim: true, 
-        required: "Name is Required"
     }, 
     type: {
         type: String,
@@ -28,6 +27,9 @@ const StatsSchema = new Schema({
         endTime: Date, 
     }  
 });
+
+//schema.path('_id');
+//doc._id instanceof mongoose.Types.ObjectId;
 
 const Stats = mongoose.model("Stats", StatsSchema);
 
