@@ -1,0 +1,27 @@
+{
+  "name": "Workout-Tracker",
+  "version": "1.0.0",
+  "description": "For this assignment,  I have created a workout tracker that allows a user to view, create, and track daily workouts.   The user will be able to log multiple exercises in a workout on a given day.   The user will also be able to track the name, type, weight, sets, reps, and duration of exercise.   If the exercise is a cardio exercise, the user should be able to track their distance traveled.",
+  "main": "server.js",
+  "dependencies": {
+    "express": "^4.17.1",
+    "mongoose": "^5.11.17",
+    "morgan": "^1.10.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/amcmilne/Workout-Tracker.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/amcmilne/Workout-Tracker/issues"
+  },
+  "homepage": "https://github.com/amcmilne/Workout-Tracker#readme"
+}
