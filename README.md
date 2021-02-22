@@ -27,6 +27,19 @@ The user should be able to:
 
 * Heroku
 * Github
+
+## View Work: 
+* https://drive.google.com/file/d/1vrRmewzrEDP3LpyKsTZsFtDtrxSbyoDV/view
+* https://github.com/amcmilne/Workout-Tracker
+* https://safe-bayou-15811.herokuapp.com/
+  
+### Screenshots: 
+<img src= "public/img/homepage.png">
+<img src= "public/img/addworkout.png">
+<img src= "public/img/dashboard.png">
+
+### GIF: 
+<img src= "public/img/app.gif">
  
  ## License
  * MIT
