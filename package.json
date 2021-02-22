@@ -5,6 +5,7 @@
   "main": "server.js",
   "dependencies": {
     "express": "^4.17.1",
+    "heroku": "^7.47.13",
     "mongoose": "^5.11.17",
     "morgan": "^1.10.0",
     "path": "^0.12.7"
