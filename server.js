@@ -1,7 +1,9 @@
 const express = require("express");
 const logger = require("morgan");
-const mongoose = require("mongoose");
+//const mongoose = require("mongoose");
+const connectDB = require ("./DB/connection");
 
+connectDB();
 // Sets up the Express App
 // =============================================================
 const app = express();
@@ -16,11 +18,11 @@ app.use(express.json());
 app.use(express.static("public"));
 app.use(logger("dev"));
 
-// Sets up the connection
-// ==============================================================
-mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/workout", {
-  useNewUrlParser: true,
-});
+// // Sets up the connection
+// // ==============================================================
+// mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/workout", {
+//   useNewUrlParser: true,
+// });
 
 // Sets up required routes
 // =============================================================
