@@ -2,6 +2,11 @@
   "name": "Workout-Tracker",
   "version": "1.0.0",
   "description": "For this assignment,  I have created a workout tracker that allows a user to view, create, and track daily workouts.   The user will be able to log multiple exercises in a workout on a given day.   The user will also be able to track the name, type, weight, sets, reps, and duration of exercise.   If the exercise is a cardio exercise, the user should be able to track their distance traveled.",
+  "engines": {
+    "node": "14.x",
+    "npm": "6.x",
+    "yarn": "1.x"
+  },
   "main": "server.js",
   "dependencies": {
     "anymatch": "^3.1.1",
@@ -32,7 +37,8 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js",
     "seed": "node seeders/seed.js",
-    "server": "nodemon"
+    "server": "nodemon",
+    "build": "webpack"
   },
   "repository": {
     "type": "git",
