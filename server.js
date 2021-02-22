@@ -1,7 +1,8 @@
 const express = require("express");
 const logger = require("morgan");
 //const mongoose = require("mongoose");
-const connectDB = require ("./DB/connection");
+const connectDB = require ("./DB/connection2");
+require('dotenv').config();
 
 connectDB();
 // Sets up the Express App
