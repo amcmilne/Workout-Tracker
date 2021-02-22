@@ -9,7 +9,7 @@
 //  ===========================================================================================  //
 
 //const Stats = require("../models/stats.js");
-const Workout = require("../models/workout.js");
+const Workout = require("../models/Workout.js");
 //const db = require("./models");
 
 module.exports = function (app) {
