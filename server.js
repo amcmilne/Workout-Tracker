@@ -2,6 +2,7 @@ const express = require("express");
 const logger = require("morgan");
 //const mongoose = require("mongoose");
 const connectDB = require ("./DB/connection");
+const path = require ("path");
 
 connectDB();
 // Sets up the Express App
@@ -15,7 +16,7 @@ const PORT = process.env.PORT || 3000;
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
-//app.use(express.static("public"));
+app.use(express.static("public"));
 app.use(logger("dev"));
 
 app.use(express.static(path.join(__dirname, 'client', 'build')))
