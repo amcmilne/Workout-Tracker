@@ -17,15 +17,7 @@ module.exports = function (app) {
   // GET: /all
   app.get("/api/workouts", (req, res) => {
     Workout.find({})
-      .then(dbWorkout => {
-        dbWorkout.forEach(workout => {
-          var total = 0;
-          workout.exercises.forEach(e => {
-            total += e.duration;
-          });
-          workout.totalDuration = total;
-        });
-
+      .then((dbWorkout) => {
         res.json(dbWorkout);
       })
       .catch((err) => {
@@ -48,14 +40,9 @@ module.exports = function (app) {
   // PUT: /update/:id
   //or continue with their last workout.
   app.put("/api/workouts/:id", (req, res) => {
-    Workout.findByIdAndUpdate(
-      { _id: req.params.id },
-        {$inc: { totalDuration: req.body.duration } },
-        {$push: { exercises: req.body } },
-        { new: true }
-    )
+    Workout.findByIdAndUpdate(req.params.id, { $push: { exercises: req.body } })
       .then((dbWorkout) => {
-        res.json(dbWorkout);
+        res.push(dbWorkout);
       })
       .catch((err) => {
         res.json(err);
