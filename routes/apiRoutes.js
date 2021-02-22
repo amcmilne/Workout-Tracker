@@ -8,7 +8,7 @@
 
 //  ===========================================================================================  //
 
-const Stats = require("../models/stats.js");
+//const Stats = require("../models/stats.js");
 const Workout = require("../models/workout.js");
 //const db = require("./models");
 
@@ -18,6 +18,13 @@ module.exports = function (app) {
   app.get("/api/workouts", (req, res) => {
     Workout.find({})
       .then((dbWorkout) => {
+        dbWorkout.forEach((workout) => {
+          let total = 0;
+          workout.exercises.forEach((element) => {
+            total += element.duration;
+          });
+          workout.totalDuration = total;
+        });
         res.json(dbWorkout);
       })
       .catch((err) => {
@@ -40,9 +47,16 @@ module.exports = function (app) {
   // PUT: /update/:id
   //or continue with their last workout.
   app.put("/api/workouts/:id", (req, res) => {
-    Workout.findByIdAndUpdate(req.params.id, { $push: { exercises: req.body } })
+    Workout.findOneAndUpdate(
+      { _id: req.params.id },
+      {
+        $inc: { totalDuration: req.body.duration },
+        $push: { exercises: req.body },
+      },
+      { new: true }
+    )
       .then((dbWorkout) => {
-        res.push(dbWorkout);
+        res.json(dbWorkout);
       })
       .catch((err) => {
         res.json(err);
