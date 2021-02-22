@@ -8,7 +8,7 @@
 
 //  ===========================================================================================  //
 
-//const Stats = require("../models/stats.js");
+const Stats = require("../models/stats.js");
 const Workout = require("../models/workout.js");
 //const db = require("./models");
 
@@ -17,7 +17,15 @@ module.exports = function (app) {
   // GET: /all
   app.get("/api/workouts", (req, res) => {
     Workout.find({})
-      .then((dbWorkout) => {
+      .then(dbWorkout => {
+        dbWorkout.forEach(workout => {
+          var total = 0;
+          workout.exercises.forEach(e => {
+            total += e.duration;
+          });
+          workout.totalDuration = total;
+        });
+
         res.json(dbWorkout);
       })
       .catch((err) => {
@@ -40,9 +48,14 @@ module.exports = function (app) {
   // PUT: /update/:id
   //or continue with their last workout.
   app.put("/api/workouts/:id", (req, res) => {
-    Workout.findByIdAndUpdate(req.params.id, { $push: { exercises: req.body } })
+    Workout.findByIdAndUpdate(
+      { _id: req.params.id },
+        {$inc: { totalDuration: req.body.duration } },
+        {$push: { exercises: req.body } },
+        { new: true }
+    )
       .then((dbWorkout) => {
-        res.push(dbWorkout);
+        res.json(dbWorkout);
       })
       .catch((err) => {
         res.json(err);
@@ -52,7 +65,7 @@ module.exports = function (app) {
   // View the combined weight of multiple exercises from the past seven workouts on the `stats` page.
   // View the total duration of each workout from the past seven workouts on the `stats` page.
   // GET:
-  app.get("api/workouts/range", (req, res) => {
+  app.get("/api/workouts/range", (req, res) => {
     Workout.find({})
       .then((dbWorkout) => {
         res.json(dbWorkout);

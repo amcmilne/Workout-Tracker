@@ -4,7 +4,7 @@ const Schema = mongoose.Schema;
 const WorkoutSchema = new Schema({
   day: {
     type: Date,
-    default: Date.now
+    default: Date.now,
   },
   exercises: [
     {
@@ -18,7 +18,7 @@ const WorkoutSchema = new Schema({
         type: Number,
       },
       duration: {
-        type: Number
+        type: Number,
       },
       weight: {
         type: Number,
@@ -32,13 +32,18 @@ const WorkoutSchema = new Schema({
       userCreated: {
         type: Date,
         default: Date.now,
-      },
-    },
+      }
+    }
   ],
+  totalDuration: {
+    type: Number,
+    default: 0,
+  }
 });
 //Schema.path('_id');
 //doc._id instanceof mongoose.Types.ObjectId;
 
 const Workout = mongoose.model("Workout", WorkoutSchema);
+
 
 module.exports = Workout;
