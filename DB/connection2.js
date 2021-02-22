@@ -1,3 +1,3 @@
-import { connectDB } from "./connection.env";
+const { connectDB } = require("./connection.env");
 
-export default connectDB;
+module.exports = connectDB;
