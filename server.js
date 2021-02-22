@@ -2,7 +2,6 @@ const express = require("express");
 const logger = require("morgan");
 //const mongoose = require("mongoose");
 const connectDB = require ("./DB/connection");
-const path = require ("path");
 
 connectDB();
 // Sets up the Express App
@@ -19,13 +18,6 @@ app.use(express.json());
 app.use(express.static("public"));
 app.use(logger("dev"));
 
-app.use(express.static(path.join(__dirname, 'client', 'build')))
-    // required to serve SPA on heroku production without routing problems; it will skip only 'api' calls
-    if (process.env.NODE_ENV === 'production') {
-      app.get(/^((?!(api)).)*$/, (req, res) => {
-        res.sendFile(path.join(__dirname, 'client/build', 'index.html'))
-      })
-    }
 
 // // Sets up the connection
 // // ==============================================================
