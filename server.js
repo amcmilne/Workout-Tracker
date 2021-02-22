@@ -22,9 +22,9 @@ app.use(logger("dev"));
 
 // // Sets up the connection
 // // ==============================================================
-// mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/workout", {
-//   useNewUrlParser: true,
-// });
+mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/workout", {
+  useNewUrlParser: true,
+});
 
 // Sets up required routes
 // =============================================================
