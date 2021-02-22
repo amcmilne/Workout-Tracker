@@ -30,7 +30,8 @@
     "prepend-http": "^2.0.0",
     "pupa": "^2.1.1",
     "readdirp": "^3.5.0",
-    "responselike": "^1.0.2"
+    "responselike": "^1.0.2",
+    "webpack": "^5.23.0"
   },
   "devDependencies": {},
   "scripts": {
