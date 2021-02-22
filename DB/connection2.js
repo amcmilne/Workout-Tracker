@@ -1,3 +1,3 @@
-const connectDB = require("./connection.env");
+const connectDB = require("../connection.env");
 
 module.exports = connectDB;
