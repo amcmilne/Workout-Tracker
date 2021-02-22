@@ -15,8 +15,16 @@ const PORT = process.env.PORT || 3000;
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
-app.use(express.static("public"));
+//app.use(express.static("public"));
 app.use(logger("dev"));
+
+app.use(express.static(path.join(__dirname, 'client', 'build')))
+    // required to serve SPA on heroku production without routing problems; it will skip only 'api' calls
+    if (process.env.NODE_ENV === 'production') {
+      app.get(/^((?!(api)).)*$/, (req, res) => {
+        res.sendFile(path.join(__dirname, 'client/build', 'index.html'))
+      })
+    }
 
 // // Sets up the connection
 // // ==============================================================
