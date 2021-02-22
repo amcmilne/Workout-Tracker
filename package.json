@@ -4,19 +4,32 @@
   "description": "For this assignment,  I have created a workout tracker that allows a user to view, create, and track daily workouts.   The user will be able to log multiple exercises in a workout on a given day.   The user will also be able to track the name, type, weight, sets, reps, and duration of exercise.   If the exercise is a cardio exercise, the user should be able to track their distance traveled.",
   "main": "server.js",
   "dependencies": {
+    "anymatch": "^3.1.1",
+    "clone-response": "^1.0.2",
+    "decompress-response": "^3.3.0",
     "express": "^4.17.1",
     "heroku": "^7.47.13",
+    "make-dir": "^3.1.0",
+    "mimic-response": "^1.0.1",
+    "minimist": "^1.2.5",
     "mongoose": "^5.11.17",
     "morgan": "^1.10.0",
-    "path": "^0.12.7"
+    "nodemon": "^2.0.7",
+    "nopt": "^1.0.10",
+    "normalize-path": "^3.0.0",
+    "normalize-url": "^4.5.0",
+    "p-cancelable": "^1.1.0",
+    "path": "^0.12.7",
+    "picomatch": "^2.2.2",
+    "prepend-http": "^2.0.0",
+    "pupa": "^2.1.1",
+    "readdirp": "^3.5.0",
+    "responselike": "^1.0.2"
   },
-  "devDependencies": {
-    "nodemon": "^2.0.7"
-  },
+  "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js",
-    "seed": "node seeders/seed.js",
     "server": "nodemon"
   },
   "repository": {
